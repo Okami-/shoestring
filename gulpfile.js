@@ -53,6 +53,16 @@ gulp.task("styles:dev", function () {
     .pipe(reload({stream: true}));
 });
 
+gulp.task("js", function() {
+  gulp.src('./js/*.js')
+    .pipe($.uglify())
+    .pipe($.concat("shoestring.js"))
+    .pipe(gulp.dest('./dist/js/'))
+    .pipe(gulp.dest('./assets/js/'))
+    .pipe(gulp.dest("_gh_pages/dist/js/"))
+    .pipe(gulp.dest("docs/dist/js/"));
+})
+
 gulp.task("styles:prod", function () {
   // Looks at the style.scss file for what to include and creates a style.css file
   return gulp.src("scss/shoestring.scss")
@@ -143,7 +153,7 @@ gulp.task('deploy', function() {
 
 // Run JS Lint against your JS
 gulp.task("jslint", function () {
-  gulp.src("./dist/js/*.js")
+  gulp.src("js/*.js")
     // Checks your JS code quality against your .jshintrc file
     .pipe($.jshint(".jshintrc"))
     .pipe($.jshint.reporter());

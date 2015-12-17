@@ -87,6 +87,37 @@
     .accordion__header:first-child{
         border-top-style: none;
     }
+}
 
+a.accordion {
+  position: relative;
+  &:before {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  &:before {
+    border-width: 5px;
+    top: 20%;
+    left: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid grey;
+  }
+  &.active:before {
+    border-width: 5px;
+    top: 37%;
+    left: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid grey;
+  }
 
+}
+a.accordion, .accordian-content{
+  padding-left: 20px;
 }
